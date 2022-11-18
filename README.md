@@ -8,7 +8,7 @@ Including the AWS Glue dependency silently breaks IRSA, causing the pod to run u
 
 This is likely to impact projects intending to use IRSA with MSK, as the MSK IAM library and AWS Glue libraries are very likely to be included in those projects.
 
-Without debug logging enabled in an IRSA enabled environment there was very little to indicate what caused this issue.
+Isolating this error required a full deploy into an IRSA enabled EKS environment with debug logging in place.
 
 ## Details
 
