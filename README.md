@@ -35,15 +35,33 @@ Manually set the http client implementation:
 
 It is not clear how this setting impacts any of the libraries, but Glue/LM/MSK appear to work with that setting and IRSA roles are resumed.
 
-## Usage
+## Reproduce
+
+This project includes the latest version of three AWS dependencies:
+
+```
+[software.amazon.awssdk/licensemanager "2.18.20"]
+[software.amazon.msk/aws-msk-iam-auth "1.1.5"]
+[software.amazon.glue/schema-registry-serde "1.1.14"]]
+```
+
+The [irsa-error-repro](src/irsa_error_repro.clj) namespace includes a clojure function instantiates a ClasspathSdkHttpServiceProvider/syncProvider and calls 'loadService'.
+
+Any combination licensemanager or aws-msk-iam-auth libraries error when paired with schema-registry-serde.
+
+Install Leiningen:
 
 ```bash
 brew install lein
 ```
 
+Run the reproducer:
+
 ```bash
 lein run irsa-error-repro
 ```
+
+See the result:
 
 ```bash
 Execution error (SdkClientException) at software.amazon.awssdk.core.exception.SdkClientException$BuilderImpl/build (SdkClientException.java:102).
