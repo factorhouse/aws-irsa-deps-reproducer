@@ -42,7 +42,7 @@ This project includes the latest version of three AWS dependencies:
 ```
 [software.amazon.awssdk/licensemanager "2.18.20"]
 [software.amazon.msk/aws-msk-iam-auth "1.1.5"]
-[software.amazon.glue/schema-registry-serde "1.1.14"]]
+[software.amazon.glue/schema-registry-serde "1.1.14"]
 ```
 
 The [irsa-error-repro](src/irsa_error_repro.clj) namespace includes a clojure function instantiates a ClasspathSdkHttpServiceProvider/syncProvider and calls 'loadService'.
