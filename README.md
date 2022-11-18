@@ -6,6 +6,14 @@ IAM Roles for Service Accounts (IRSA) allows EKS pods to assume an IAM role.
 
 Including the AWS Glue dependency silently breaks IRSA, causing the pod to run under the NodeInstanceRole rather than the properly configured IRSA role.
 
+This is likely to impact projects intending to use IRSA with MSK, as the MSK IAM library and AWS Glue libraries are very likely to be included in those projects.
+
+Without debug logging enabled in an IRSA enabled environment there was very little to indicate what caused this issue.
+
+## Details
+
+Running Kpow in EKS with IRSA in place and no workaround applied (and debug logging turned on)
+
 ```bash
 01:30:45.217 ERROR [main] instruct.system – [:instruct.system/init :kafka/primary-cluster] instruction failed
 software.amazon.awssdk.services.licensemanager.model.AuthorizationException: User: arn:aws:sts::489728315157:assumed-role/eksctl-awsmp-kpow-example-nodegro-NodeInstanceRole-RF0DW6JPCQ07/i-0dd68413a10f85f5c is not authorized to perform: license-manager:CheckoutLicense because no identity-based policy allows the license-manager:CheckoutLicense action (Service: LicenseManager, Status Code: 400, Request ID: c2546bfe-6a8e-4d0f-a635-36d07ddacad2)
