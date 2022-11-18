@@ -21,8 +21,10 @@ software.amazon.awssdk.services.licensemanager.model.AuthorizationException: Use
 
 This role fallback happens because the WebIdentityTokenCredentialsProvider fails to execute:
 
+(note, this is a DEBUG log line)
+
 ```bash
-s.a.a.a.c.AwsCredentialsProviderChain – Unable to load credentials from WebIdentityTokenCredentialsProvider(): Multiple HTTP implementations were found on the classpath. To avoid non-deterministic loading implementations, please explicitly provide an HTTP client via the client builders, set the software.amazon.awssdk.http.service.impl system property with the FQCN of the HTTP service to use as the default, or remove all but one HTTP implementation from the classpath
+01:30:44.137 DEBUG [main] s.a.a.a.c.AwsCredentialsProviderChain – Unable to load credentials from WebIdentityTokenCredentialsProvider(): Multiple HTTP implementations were found on the classpath. To avoid non-deterministic loading implementations, please explicitly provide an HTTP client via the client builders, set the software.amazon.awssdk.http.service.impl system property with the FQCN of the HTTP service to use as the default, or remove all but one HTTP implementation from the classpath
 software.amazon.awssdk.core.exception.SdkClientException: Multiple HTTP implementations were found on the classpath. To avoid non-deterministic loading implementations, please explicitly provide an HTTP client via the client builders, set the software.amazon.awssdk.http.service.impl system property with the FQCN of the HTTP service to use as the default, or remove all but one HTTP implementation from the classpath
         at software.amazon.awssdk.core.exception.SdkClientException$BuilderImpl.build(SdkClientException.java:102)
         at software.amazon.awssdk.core.internal.http.loader.ClasspathSdkHttpServiceProvider.loadService(ClasspathSdkHttpServiceProvider.java:62)
